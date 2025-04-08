@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Doctor } from '../models/doctor.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class DoctorService {
-  private apiUrl = 'https://localhost:7275/api/doctors';
+  private apiUrl = environment.apiUrl + '/doctors'; ;
 
   constructor(private http: HttpClient) { }
 

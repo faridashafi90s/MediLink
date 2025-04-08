@@ -4,13 +4,14 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
 import { AppointmentStatus } from '../models/appointment-status.enum';
 import { UserRole } from '../../../shared/models/user-role.enum';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AppointmentService {
-  private apiUrl = 'https://localhost:7275/api/appointments';
+  private apiUrl = environment.apiUrl + '/appointments'; ;
 
   private appointmentsSubject = new BehaviorSubject<Appointment[]>([]);
   appointments$ = this.appointmentsSubject.asObservable();

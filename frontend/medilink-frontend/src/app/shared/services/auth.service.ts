@@ -4,12 +4,13 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { UserData } from '../models/user-data.model';
 import { AuthResponse } from '../models/auth-response.model';
 import { UserRole } from '../models/user-role.enum';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7275/api/auth';
+  private apiUrl = environment.apiUrl + '/auth'; 
   private currentUserSubject = new BehaviorSubject<UserData | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
