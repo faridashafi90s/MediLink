@@ -22,7 +22,6 @@ MediLink.API/.vs/
 # Environment & launch settings
 # =====================================
 MediLink.API/appsettings.development.json
-MediLink.API/appsettings.production.json
 MediLink.API/properties/launchSettings.json
 
 # =====================================

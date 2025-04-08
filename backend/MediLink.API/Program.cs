@@ -24,8 +24,13 @@ builder.Services.AddCors(options =>
 });
 
 // Get JWT settings from appsettings.json
-var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-var key = Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]);
+builder.Services.Configure<JwtSettings>(options =>
+{
+    options.SecretKey = Environment.GetEnvironmentVariable("JwtSettings__SecretKey");
+    options.Issuer = builder.Configuration["JwtSettings:Issuer"];
+    options.Audience = builder.Configuration["JwtSettings:Audience"];
+    options.ExpiryMinutes = int.Parse(builder.Configuration["JwtSettings:ExpiryMinutes"]);
+});
 
 // Add Authentication services
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

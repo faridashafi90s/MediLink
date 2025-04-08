@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://your-backend-api-name.azurewebsites.net/api'
+    apiUrl: 'https://medilink-app.azurewebsites.net/api'
   };
