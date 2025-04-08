@@ -1,0 +1,31 @@
+# =====================================
+# Ignore build output from all projects
+# =====================================
+MediLink.API/bin/
+MediLink.API/obj/
+MediLink.Application/bin/
+MediLink.Application/obj/
+MediLink.Domain/bin/
+MediLink.Domain/obj/
+MediLink.Infrastructure/bin/
+MediLink.Infrastructure/obj/
+
+# =====================================
+# Visual Studio files
+# =====================================
+.vs/
+MediLink.API/.vs/
+*.user
+*.suo
+
+# =====================================
+# Environment & launch settings
+# =====================================
+MediLink.API/appsettings.development.json
+MediLink.API/appsettings.production.json
+MediLink.API/properties/launchSettings.json
+
+# =====================================
+# DotEnv
+# =====================================
+*.env

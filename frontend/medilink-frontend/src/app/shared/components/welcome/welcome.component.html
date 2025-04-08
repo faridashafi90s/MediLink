@@ -1,0 +1,61 @@
+<div class="welcome-container">
+  <div class="background-elements">
+    <div class="pulse-layer"></div>
+    <div class="floating-cards">
+      <div class="medical-card"></div>
+      <div class="medical-card"></div>
+      <div class="medical-card"></div>
+    </div>
+    <div class="particle-network"></div>
+  </div>
+
+  <div class="hero-card">
+    <header class="app-header">
+      <div class="logo-container">
+        <div class="logo-icon"></div>
+        <h1 class="app-name">MediLink</h1>
+      </div>
+      <div class="connection-status">
+        <div class="status-dot"></div>
+        <span>Connected</span>
+      </div>
+    </header>
+
+    <div class="content-wrapper">
+      <div class="welcome-heading">
+        <h2 class="welcome-text">Welcome to</h2>
+        <h1 class="brand-name">
+          MediLink CareConnect
+          <span class="brand-plus">+</span>
+        </h1>
+        <p class="app-subtitle">
+          Direct Patient-Doctor Appointment System
+        </p>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="dashboard-grid">
+        @for (role of roles; track $index) {
+        <div class="dashboard-card" (mouseenter)="activateParticles($event)" (click)="selectRole(role.roleType)">
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="role-icon">{{ role.icon }}</div>
+            <h3 class="role-title">{{ role.label }}</h3>
+            <p class="role-description">
+              {{ role.description }}
+            </p>
+            <div class="access-button">
+              Enter Dashboard
+              <div class="arrow-icon">→</div>
+            </div>
+          </div>
+          <div class="particle-burst" #particleBurst></div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="scan-line"></div>
+  <div class="neon-grid"></div>
+</div>

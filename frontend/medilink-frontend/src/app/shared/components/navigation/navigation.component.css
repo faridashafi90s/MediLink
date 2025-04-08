@@ -1,0 +1,19 @@
+.nav-link.active {
+    background-color: #007bff !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+}
+
+.nav-link {
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    margin: 2px 0;
+    position: relative;
+}
+
+.nav-item:hover {
+    background-color: #2a2c3c;
+    transform: scale(1.05);
+}

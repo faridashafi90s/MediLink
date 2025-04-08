@@ -1,0 +1,124 @@
+<!-- Doctor Form HTML -->
+<div class="dialog-overlay">
+  <div class="dialog-container">
+    <!-- Dialog Header -->
+    <div class="custom-dialog-title">
+      <div class="dialog-header-content">
+        <h5>{{ isEditMode ? 'Edit Doctor' : 'Add Doctor' }}</h5>
+        <button class="close-icon" (click)="closeDialog()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Dialog Body -->
+    <div class="form-content">
+      <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-section">
+          <!-- First Name -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-person"></i>
+                First Name
+              </label>
+              <input type="text" formControlName="firstName" class="form-control" required aria-label="First Name" />
+            </div>
+            @if (doctorForm.get('firstName')?.invalid && doctorForm.get('firstName')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              First Name is required
+            </div>
+            }
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-person"></i>
+                Last Name
+              </label>
+              <input type="text" formControlName="lastName" class="form-control" required aria-label="Last Name" />
+            </div>
+            @if (doctorForm.get('lastName')?.invalid && doctorForm.get('lastName')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              Last Name is required
+            </div>
+            }
+          </div>
+
+          <!-- Specialization -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-clipboard-plus"></i>
+                Specialization
+              </label>
+              <input type="text" formControlName="specialization" class="form-control" required
+                aria-label="Specialization" />
+            </div>
+            @if (doctorForm.get('specialization')?.invalid && doctorForm.get('specialization')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              Specialization is required
+            </div>
+            }
+          </div>
+
+          <!-- Contact Number -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-telephone"></i>
+                Contact Number
+              </label>
+              <input type="tel" formControlName="contactNumber" class="form-control" required
+                aria-label="Contact Number" />
+            </div>
+            @if (doctorForm.get('contactNumber')?.invalid && doctorForm.get('contactNumber')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              Contact Number is required
+            </div>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-envelope"></i>
+                Email
+              </label>
+              <input type="email" formControlName="email" class="form-control" required aria-label="Email" />
+            </div>
+            @if (doctorForm.get('email')?.invalid && doctorForm.get('email')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              Valid email is required
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Dialog Actions -->
+        <div class="dialog-actions">
+          <button type="button" class="btn btn-secondary" (click)="closeDialog()">Cancel</button>
+          <button type="submit" class="btn btn-primary" [disabled]="isSubmitting || doctorForm.invalid">
+            {{ isEditMode ? (isSubmitting ? 'Updating...' : 'Update Doctor') : (isSubmitting ? 'Adding...' : 'Add
+            Doctor') }}
+          </button>
+        </div>
+
+        @if (errorMessage) {
+        <div class="error-message">
+          <i class="bi bi-x-circle"></i>
+          {{ errorMessage }}
+        </div>
+        }
+      </form>
+    </div>
+  </div>
+</div>

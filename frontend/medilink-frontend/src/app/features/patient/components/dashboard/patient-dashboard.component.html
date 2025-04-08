@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar Navigation -->
+        <div class="col-md-3 col-lg-2 d-md-block sidebar">
+            <app-navigation></app-navigation>
+        </div>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+            <router-outlet></router-outlet>
+            <h2 class="welcome-title">
+                @if (patientDetails) {
+                Welcome, {{ patientDetails.fullName}}!
+                } @else {
+                Welcome, Patient!
+                }
+            </h2>
+            <p class="lead">Here you can manage your appointments and medical history.</p>
+
+            <div class="row">
+                <div class="col-md-4" role="button">
+                    <a class="text-decoration-none" (click)="openUpcomingAppointments()">
+                        <div class="card custom-card bg-primary text-white">
+                            <div class="card-header">Upcoming Appointments</div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ upcomingAppointmentsCount$ | async }} Appointments</h5>
+                                <p class="card-text">Check your scheduled appointments.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4" role="button">
+                    <a class="text-decoration-none" (click)="openComingSoonDialog()">
+                        <div class="card custom-card bg-success text-white">
+                            <div class="card-header">Medical Records</div>
+                            <div class="card-body">
+                                <h5 class="card-title">View Records</h5>
+                                <p class="card-text">Access your medical history and reports.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-4" role="button">
+                    <a class="text-decoration-none" (click)="openProfile()">
+                        <div class="card custom-card bg-warning text-white">
+                            <div class="card-header">Profile</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Update Information</h5>
+                                <p class="card-text">Manage your personal details.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating Action Button for Creating an Appointment -->
+            <button class="fab btn btn-primary" (click)="createAppointment()" data-bs-toggle="tooltip"
+                title="Create Appointment">
+                <i class="bi bi-plus"></i>
+            </button>
+        </main>
+    </div>
+</div>

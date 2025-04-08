@@ -1,0 +1,42 @@
+<h2>Doctor List</h2>
+
+<!-- Button to navigate to Add Doctor -->
+<button (click)="navigateToAdd()">Add Doctor</button>
+
+<!-- Error message display -->
+@if (errorMessage) {
+<div class="error">{{ errorMessage }}</div>
+}
+
+<!-- Doctors Table -->
+@if (doctors.length > 0) {
+<table>
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Specialization</th>
+      <th>Contact Number</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (doctor of doctors; track doctor.id) {
+    <tr>
+      <td>{{ doctor.firstName }}</td>
+      <td>{{ doctor.lastName }}</td>
+      <td>{{ doctor.specialization }}</td>
+      <td>{{ doctor.contactNumber }}</td>
+      <td>{{ doctor.email }}</td>
+      <td>
+        <button (click)="navigateToEdit(doctor.id)">Edit</button>
+        <button (click)="deleteDoctor(doctor.id)">Delete</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+} @else {
+<div>No doctors found. Click "Add Doctor" to create one.</div>
+}

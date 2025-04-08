@@ -1,0 +1,143 @@
+<div class="dialog-overlay">
+  <div class="dialog-container">
+    <!-- Dialog Header -->
+    <div class="custom-dialog-title">
+      <div class="dialog-header-content">
+        <h5>{{ isEditMode ? 'Edit Patient' : 'Add Patient' }}</h5>
+        <button class="close-icon" (click)="closeDialog()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Dialog Body -->
+    <div class="form-content">
+      <form [formGroup]="patientForm" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-section">
+          <!-- First Name -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-person"></i>
+                First Name
+              </label>
+              <input type="text" formControlName="firstName" class="form-control" required />
+            </div>
+            @if (patientForm.get('firstName')?.invalid && patientForm.get('firstName')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              First Name is required
+            </div>
+            }
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-person"></i>
+                Last Name
+              </label>
+              <input type="text" formControlName="lastName" class="form-control" required />
+            </div>
+            @if (patientForm.get('lastName')?.invalid && patientForm.get('lastName')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              Last Name is required
+            </div>
+            }
+          </div>
+
+          <!-- Date of Birth -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-calendar-event"></i>
+                Date of Birth
+              </label>
+              <input type="date" formControlName="dateOfBirth" class="form-control" required />
+            </div>
+            @if (patientForm.get('dateOfBirth')?.invalid && patientForm.get('dateOfBirth')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              Date of Birth is required
+            </div>
+            }
+          </div>
+
+          <!-- Gender -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-gender-ambiguous"></i>
+                Gender
+              </label>
+              <select formControlName="gender" class="form-select" required>
+                <option value="" disabled>Select Gender</option>
+                @for (gender of ['Male', 'Female']; track gender) {
+                <option [value]="gender">{{ gender }}</option>
+                }
+              </select>
+            </div>
+            @if (patientForm.get('gender')?.invalid && patientForm.get('gender')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              Gender is required
+            </div>
+            }
+          </div>
+
+          <!-- Contact Number -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-telephone"></i>
+                Contact Number
+              </label>
+              <input type="tel" formControlName="contactNumber" class="form-control" required />
+            </div>
+            @if (patientForm.get('contactNumber')?.invalid && patientForm.get('contactNumber')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              Contact Number is required
+            </div>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <div class="form-row">
+              <label class="form-label">
+                <i class="bi bi-envelope"></i>
+                Email
+              </label>
+              <input type="email" formControlName="email" class="form-control" required />
+            </div>
+            @if (patientForm.get('email')?.invalid && patientForm.get('email')?.touched) {
+            <div class="text-danger">
+              <i class="bi bi-exclamation-circle"></i>
+              Valid email is required
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Dialog Actions -->
+        <div class="dialog-actions">
+          <button type="button" class="btn btn-secondary" (click)="closeDialog()">Cancel</button>
+          <button type="submit" class="btn btn-primary" [disabled]="isSubmitting || patientForm.invalid">
+            {{ isEditMode ? (isSubmitting ? 'Updating...' : 'Update Patient') : (isSubmitting ? 'Adding...' : 'Add
+            Patient') }}
+          </button>
+        </div>
+
+        @if (errorMessage) {
+        <div class="error-message">
+          <i class="bi bi-x-circle"></i>
+          {{ errorMessage }}
+        </div>
+        }
+      </form>
+    </div>
+  </div>
+</div>

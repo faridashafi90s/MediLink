@@ -1,0 +1,48 @@
+# =============================
+# Ignore build output & cache
+# =============================
+medilink-frontend/dist/
+medilink-frontend/tmp/
+medilink-frontend/out-tsc/
+medilink-frontend/.angular/cache/
+medilink-frontend/coverage/
+medilink-frontend/.sass-cache/
+medilink-frontend/.history/
+
+# =============================
+# Node and package managers
+# =============================
+medilink-frontend/node_modules/
+medilink-frontend/npm-debug.log
+medilink-frontend/yarn-error.log
+medilink-frontend/package-lock.json
+
+# =============================
+# Environment files
+# =============================
+medilink-frontend/*.env
+
+# =============================
+# IDE and editor settings
+# =============================
+medilink-frontend/.idea/
+medilink-frontend/.vscode/
+medilink-frontend/.project
+medilink-frontend/.classpath
+medilink-frontend/.c9/
+medilink-frontend/.settings/
+medilink-frontend/*.launch
+medilink-frontend/*.sublime-workspace
+
+# =============================
+# System Files
+# =============================
+medilink-frontend/.DS_Store
+medilink-frontend/Thumbs.db
+
+# =============================
+# Logs
+# =============================
+medilink-frontend/connect.lock
+medilink-frontend/libpeerconnection.log
+medilink-frontend/testem.log

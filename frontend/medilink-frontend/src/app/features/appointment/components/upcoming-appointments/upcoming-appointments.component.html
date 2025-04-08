@@ -1,0 +1,51 @@
+<div class="custom-dialog-title">
+  <div class="dialog-header-content">
+    <h5>Upcoming Appointments</h5>
+    <button class="close-icon" (click)="closeDialog()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+</div>
+
+<mat-dialog-content class="upcoming-appointments">
+  @if (upcomingAppointments$ | async; as upcomingAppointments) {
+  @if (upcomingAppointments.length > 0) {
+  <div class="appointment-list">
+    @for (appointment of upcomingAppointments; track appointment.id) {
+    <div class="appointment-card">
+      <div class="appointment-info">
+        <p class="date">
+          <i class="bi bi-calendar-event"></i>
+          <strong>Date:</strong> {{ appointment.appointmentDate | date: 'fullDate' }}
+        </p>
+        <p class="doctor">
+          <i class="bi bi-person-circle"></i>
+          @if(userDetails.role === UserRole.Doctor) {
+          <strong>Patient:</strong> {{ appointment.patientName }}
+          } @else {
+          <strong>Doctor:</strong> {{ appointment.doctorName }}
+          }
+        </p>
+      </div>
+      <div class="appointment-actions">
+        @if(userDetails.role !== UserRole.Doctor){
+        <button class="btn btn-primary btn-sm edit-btn" (click)="editAppointment(appointment.id)">
+          <i class="bi bi-pencil-square"></i> Edit
+        </button>
+        <button class="btn btn-danger btn-sm cancel-btn" (click)="cancelAppointment(appointment.id)">
+          <i class="bi bi-x-circle"></i> Cancel
+        </button>
+        }
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <p class="text-muted text-center">No upcoming appointments found.</p>
+  }
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close class="btn btn-secondary">Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,66 @@
+<div class="dialog-container">
+  <div class="custom-dialog-title">
+    <div class="dialog-header-content">
+      <h5>{{ isEditMode ? 'Edit Appointment' : 'Add Appointment' }}</h5>
+      <button class="close-icon" (click)="closeDialog()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+  </div>
+
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" novalidate class="form-content">
+    <div class="form-section">
+      <!-- Date -->
+      <div class="form-group">
+        <label for="appointmentDate">Appointment Date</label>
+        <input id="appointmentDate" type="date" formControlName="appointmentDate" class="form-control"
+          [min]="minDate" />
+        @if (appointmentForm.get('appointmentDate')?.hasError('pastDate')) {
+        <div class="error">
+          Appointment date cannot be in the past.
+        </div>
+        }
+      </div>
+
+      <!-- Doctor -->
+      <div class="form-group">
+        <div class="form-row">
+          <label for="doctorId" class="form-label">
+            <i class="bi bi-person-circle"></i>
+            Doctor
+          </label>
+          <select id="doctorId" formControlName="doctorId" class="form-select" required>
+            <option value="" disabled>Select Doctor</option>
+            @for (doctor of doctors; track doctor.id) {
+            <option [value]="doctor.id">{{ doctor.firstName }} {{ doctor.lastName }}</option>
+            }
+          </select>
+        </div>
+        @if (appointmentForm.get('doctorId')?.invalid && appointmentForm.get('doctorId')?.touched) {
+        <div class="text-danger">
+          <i class="bi bi-exclamation-circle"></i>
+          Doctor is required
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="dialog-actions">
+      <button type="button" class="btn btn-secondary" (click)="closeDialog()">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="isSubmitting || appointmentForm.invalid">
+        @if (isEditMode) {
+        {{ isSubmitting ? 'Updating...' : 'Update Appointment' }}
+        } @else {
+        {{ isSubmitting ? 'Adding...' : 'Add Appointment' }}
+        }
+      </button>
+    </div>
+
+    @if (errorMessage) {
+    <div class="error-message">
+      <i class="bi bi-x-circle"></i>
+      {{ errorMessage }}
+    </div>
+    }
+  </form>
+</div>

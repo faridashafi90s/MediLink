@@ -1,0 +1,105 @@
+/* Main container */
+.upcoming-appointments {
+  padding: 1rem;
+}
+
+/* List of appointments */
+.appointment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Appointment card */
+.appointment-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.appointment-card:hover {
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Appointment details (left section) */
+.appointment-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.appointment-info p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Icons styling */
+.appointment-info i {
+  color: #007bff;
+  margin-right: 5px;
+}
+
+/* Action buttons container (right section) */
+.appointment-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Button Styling */
+.edit-btn,
+.cancel-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Dialog Actions */
+mat-dialog-actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ddd;
+  background: #f9f9f9;
+}
+
+/* Dialog Title */
+.custom-dialog-title {
+  background-color: #1a1c2c;
+  color: white;
+  padding: 1rem 1.2rem;
+}
+
+/* Header Content */
+.dialog-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Close Button */
+.close-icon {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.25rem;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.close-icon:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+.bi-x-lg {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}

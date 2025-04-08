@@ -1,0 +1,102 @@
+/* Match upcoming-appointments styles */
+.custom-dialog-title {
+  background-color: #1a1c2c;
+  color: white;
+  padding: 1rem 1.2rem;
+}
+
+.dialog-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-icon {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.25rem;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.close-icon:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+.bi-x-lg {
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.upcoming-appointments {
+  padding: 1.5rem;
+  background: #f8f9fa;
+}
+
+.coming-soon-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+}
+
+.info-message {
+  text-align: center;
+  padding: 2rem;
+}
+
+.info-message i {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.info-message p {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.5;
+  margin: 0;
+}
+
+mat-dialog-actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ddd;
+  background: #f9f9f9;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .info-message {
+    padding: 1rem;
+  }
+
+  .info-message i {
+    font-size: 2rem;
+  }
+
+  .info-message p {
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}

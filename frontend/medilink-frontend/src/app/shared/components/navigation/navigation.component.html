@@ -1,0 +1,35 @@
+<nav>
+    <div class="position-sticky">
+        <ul class="nav flex-column">
+            @if (currentUser$ | async; as user) {
+            @if (user.role === UserRole.Doctor) {
+            <li class="nav-item">
+                <a class="nav-link active" routerLink="/doctors/doctor-dashboard" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/doctors/doctor-dashboard/appointments"
+                    routerLinkActive="active">Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/doctors/doctor-dashboard/profile" routerLinkActive="active">Profile</a>
+            </li>
+            }
+            @else{
+            <li class="nav-item">
+                <a class="nav-link active" routerLink="/patients/patient-dashboard" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/patients/patient-dashboard/appointments"
+                    routerLinkActive="active">Appointments</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/patients/patient-dashboard/profile"
+                    routerLinkActive="active">Profile</a>
+            </li>
+            }
+            }
+        </ul>
+    </div>
+</nav>
