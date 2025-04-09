@@ -28,7 +28,7 @@ steps:
 - script: dotnet restore backend/MediLink.API/MediLink.API.sln
   displayName: 'Restore packages'
 
-- script: dotnet build backend/MediLink.API.sln --configuration $(buildConfiguration)
+- script: dotnet build backend/MediLink.API/MediLink.API.sln --configuration $(buildConfiguration)
   displayName: 'Build API'
 
 - task: DotNetCoreCLI@2
