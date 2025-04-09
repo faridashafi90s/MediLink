@@ -5,6 +5,7 @@ trigger:
   paths:
     include:
       - backend/**
+      - backend/backend-pipeline.yml
 
 pool:
   vmImage: 'windows-latest'
