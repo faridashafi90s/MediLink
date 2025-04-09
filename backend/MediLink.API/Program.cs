@@ -1,3 +1,4 @@
+using MediLink.Application.DTOs;
 using MediLink.Infrastructure;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -23,16 +24,13 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Get JWT settings from appsettings.json
-builder.Services.Configure<JwtSettings>(options =>
-{
-    options.SecretKey = Environment.GetEnvironmentVariable("JwtSettings__SecretKey");
-    options.Issuer = builder.Configuration["JwtSettings:Issuer"];
-    options.Audience = builder.Configuration["JwtSettings:Audience"];
-    options.ExpiryMinutes = int.Parse(builder.Configuration["JwtSettings:ExpiryMinutes"]);
-});
+// Binding the JwtSettings section to the class
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
-// Add Authentication services
+// Retrieve the configured settings
+var jwtSettings = builder.Configuration.GetSection("JwtSettings").Get<JwtSettings>();
+
+// Configure JWT authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -42,9 +40,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = true,
             ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = jwtSettings["Issuer"],
-            ValidAudience = jwtSettings["Audience"],
-            IssuerSigningKey = new SymmetricSecurityKey(key)
+            ValidIssuer = jwtSettings.Issuer,
+            ValidAudience = jwtSettings.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey))
         };
     });
 
